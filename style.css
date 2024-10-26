@@ -1,0 +1,41 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+
+  th {
+    user-select: none;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+
+    &:first-child {
+      width: 50px;
+    }
+  }
+
+  th.sorted, th:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  th.sorted::after {
+    content: "\00a0\00a0\00a0▼";
+  }
+
+  th.sorted.desc::after {
+    content: "\00a0\00a0\00a0▲";
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+}
