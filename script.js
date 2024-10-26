@@ -28,7 +28,15 @@ function handleSort(e) {
 function sortBy(key, reverse) {
   const [header, ...rows] = table.rows
 
-  rows.sort((a, b) => users[a.dataset.index][key].localeCompare?.(users[b.dataset.index][key]) ?? users[a.dataset.index][key] - users[b.dataset.index][key])
+  rows.sort((a, b) => {
+    const aIndex = a.dataset.index
+    const bIndex = b.dataset.index
+    const aUser = users[aIndex]
+    const bUser = users[bIndex]
+    const result = aUser[key].localeCompare?.(bUser[key])
+    
+    return result ?? aUser[key] - bUser[key]
+  })
 
   if (reverse) rows.reverse()
 
